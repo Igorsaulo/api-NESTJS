@@ -29,4 +29,15 @@ export class UserService {
       return { message: 'Error deleting user' };
     }
   }
+
+  async update(id: number, updateuser : User) {
+    try {
+      await this.prisma.user.update({ where: { id }, data: updateuser });
+      return { message: 'User updated successfully' };
+    } catch (error) {
+      console.log(error);
+      return { message: 'Error updating user' };
+    }
+  }
+
 }

@@ -16,4 +16,9 @@ export class UserController {
   Delete(@Param('id') id: number) {
     return this.userService.delete(id);
   }
+  @UseGuards(AuthGuard)
+  @Patch(':id')
+  update(@Param('id') id: number, @Body() user : User) {
+    return this.userService.update(id,user);
+  }
 }
